@@ -1,0 +1,17 @@
+[
+  {
+    "name": "vue",
+    "kinds": "front",
+    "all_member": 9
+  },
+  {
+    "name": "React",
+    "kinds": "front",
+    "all_member": 2
+  },
+  {
+    "name": "Echo",
+    "kinds": "backend",
+    "all_member": 4
+  }
+]

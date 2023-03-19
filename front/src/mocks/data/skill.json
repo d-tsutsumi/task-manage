@@ -1,0 +1,22 @@
+{
+  "name": "vue",
+  "kinds": "front",
+  "proficiency": [
+    {
+      "rank": "A",
+      "members": ["tsutsumi", "test", "testA"],
+      "count": 3
+    },
+    {
+      "rank": "B",
+      "members": ["tsutsumi", "test", "testA"],
+      "count": 3
+    },
+    {
+      "rank": "C",
+      "members": ["tsutsumi", "test", "testA"],
+      "count": 3
+    }
+  ],
+  "all_member": 9
+}
