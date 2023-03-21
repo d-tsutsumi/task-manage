@@ -1,0 +1,1 @@
+export type InputTextSize = 'sm' | 'md' | 'lg' | 'xl' | '2xl' | "full"
