@@ -2,7 +2,7 @@ import InputGroup from './inputGroup';
 import { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<typeof InputGroup> = {
-  title: 'UI/InputGroup',
+  title: 'UI/input/InputGroup',
   component: InputGroup,
   tags: ['autodocs'],
 };

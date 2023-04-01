@@ -4,7 +4,13 @@ import { convertUIMargin } from '../utils/covertTailwindClass';
 
 type Props = {
   label: string;
+  /**
+   *  1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10;
+   */
   margin?: UIMargin;
+  /**
+   * 'l' | 'r' | 't' | 'b' | 'x' | 'y' | undefined;
+   */
   direction?: IntervalDirection;
 } & TextInputProps;
 

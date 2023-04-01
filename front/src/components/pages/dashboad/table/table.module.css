@@ -1,0 +1,12 @@
+
+
+
+
+.hegiht_all {
+  height: calc(100vh - 120px);
+}
+
+
+.hegiht_half {
+  height: calc( (100vh - 144px ) / 2);
+}

@@ -2,7 +2,7 @@ import PrimarilyButton from './primarilyButton';
 import { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<typeof PrimarilyButton> = {
-  title: 'UI/PrimarilyButton',
+  title: 'UI/button/PrimarilyButton',
   component: PrimarilyButton,
   tags: ['autodocs'],
 };

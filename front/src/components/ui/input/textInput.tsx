@@ -32,3 +32,21 @@ export default function TextInput({
     />
   );
 }
+
+
+const a = () => (
+  <div>
+    <a href='/'>Link</a>
+    <button>Button</button>
+    <footer>ContentInfo</footer>
+    <h1>Heading</h1>
+    <header>Banner</header>
+    <img src="" alt="descripttion" /> Img
+    <input type="checkbox" /> CheckBox
+    <input type="number" /> Spinbutton
+    <input type="radio" /> Radio
+    <input type="text" /> TextBox
+    <li>ListItem</li>
+    <ul>ListGroup</ul>
+  </div>
+)
