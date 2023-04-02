@@ -1,3 +1,4 @@
+import { SetStateAction } from 'react';
 import { convertUiSize } from '../utils';
 import { InputTextSize } from './types/index';
 
@@ -11,6 +12,8 @@ export type TextInputProps = {
    * 'sm' | 'md' | 'lg' | 'xl' | '2xl' | "full"
    * */
   size?: InputTextSize;
+
+  setState: React.Dispatch<SetStateAction<string>>;
 };
 
 export default function TextInput({
@@ -19,6 +22,7 @@ export default function TextInput({
   value,
   id,
   size = 'md',
+  setState,
 }: TextInputProps) {
   const inputSize = convertUiSize(size);
   return (
@@ -29,24 +33,8 @@ export default function TextInput({
       id={id}
       type={type}
       placeholder={placeholder}
+      onChange={(e) => setState(e.target.value)}
+      value={value}
     />
   );
 }
-
-
-const a = () => (
-  <div>
-    <a href='/'>Link</a>
-    <button>Button</button>
-    <footer>ContentInfo</footer>
-    <h1>Heading</h1>
-    <header>Banner</header>
-    <img src="" alt="descripttion" /> Img
-    <input type="checkbox" /> CheckBox
-    <input type="number" /> Spinbutton
-    <input type="radio" /> Radio
-    <input type="text" /> TextBox
-    <li>ListItem</li>
-    <ul>ListGroup</ul>
-  </div>
-)

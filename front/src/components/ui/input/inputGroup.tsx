@@ -1,6 +1,7 @@
 import TextInput, { TextInputProps } from './textInput';
 import { UIMargin, IntervalDirection } from '../types';
 import { convertUIMargin } from '../utils/covertTailwindClass';
+import { FormEvent, SetStateAction } from 'react';
 
 type Props = {
   label: string;
@@ -15,7 +16,7 @@ type Props = {
 } & TextInputProps;
 
 export default function InputGroup(inputProps: Props) {
-  const { label, margin, direction } = inputProps;
+  const { label, margin, direction, } = inputProps;
   const TMargin = margin ? convertUIMargin(margin, direction) : '';
 
   return (

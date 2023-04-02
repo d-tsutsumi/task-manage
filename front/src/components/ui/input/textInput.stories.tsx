@@ -18,6 +18,7 @@ export const InputText: Story = {
     id: "text",
     placeholder: "text",
     size: "md",
+    onChangeHandle: () => {}
   }
 }
 
@@ -27,6 +28,7 @@ export const InputPassword: Story = {
     type : "password",
     id: "pass",
     placeholder: "text",
-    size: "md"
+    size: "md",
+    onChangeHandle: () => {}
   }
 }
