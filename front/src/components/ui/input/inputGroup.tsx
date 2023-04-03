@@ -18,7 +18,6 @@ type Props = {
 export default function InputGroup(inputProps: Props) {
   const { label, margin, direction, } = inputProps;
   const TMargin = margin ? convertUIMargin(margin, direction) : '';
-
   return (
     <div className={TMargin}>
       <label className='block  text-gray-500 text-sm font-bold mb-2' htmlFor={label}>

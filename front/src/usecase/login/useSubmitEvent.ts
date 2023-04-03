@@ -12,8 +12,8 @@ export type LoginsubmitArgs = {
 export const useLoginSubmitEvent = () => {
   const [submit, submit$] = useObservableCallback<LoginParams, LoginsubmitArgs>((event$) =>
     event$
-      .pipe(tap((value) => value.event.preventDefault()))
-      .pipe(map((value) => ({ user_name: value.username, password: value.password }))),
+      .pipe(tap(({ event }) => event.preventDefault()))
+      .pipe(map(({ username, password }) => ({ user_name: username, password }))),
   );
 
   return {
