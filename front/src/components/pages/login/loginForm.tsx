@@ -1,25 +1,26 @@
 import InputGroup from '@/components/ui/input/inputGroup';
 import PrimarilyButton from '../../ui/button/primarilyButton';
-import { SetStateAction } from 'react';
+import { FormEvent } from 'react';
 import { LoginsubmitArgs } from '@/usecase/login';
+import { Subject } from 'rxjs';
 
 type Props = {
   username: string;
   password: string;
-  setUsername: React.Dispatch<SetStateAction<string>>;
-  setPassword: React.Dispatch<SetStateAction<string>>;
-  submit: (args: LoginsubmitArgs) => void;
+  setUsername: Subject<FormEvent<HTMLInputElement>>;
+  setPassword: Subject<FormEvent<HTMLInputElement>>;
+  submit: (e: FormEvent) =>  void
 };
 
 export default function LoginForm({ username, password, setUsername, setPassword, submit }: Props) {
   return (
     <form
       className='w-96  h-80 bg-white shadow-sm rounded-lg px-6 pt-4 pb-6 mb-2'
-      onSubmit={(e) => submit({ event: e, username: username, password })}
+      onSubmit={submit}
     >
       <InputGroup
         label='username'
-        id='username'
+        id='user_name'
         margin={4}
         direction='b'
         value={username}

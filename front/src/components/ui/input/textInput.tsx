@@ -1,6 +1,7 @@
-import { SetStateAction } from 'react';
+import { FormEvent, SetStateAction } from 'react';
 import { convertUiSize } from '../utils';
 import { InputTextSize } from './types/index';
+import { Subject } from 'rxjs';
 
 export type TextInputProps = {
   id: string;
@@ -13,7 +14,7 @@ export type TextInputProps = {
    * */
   size?: InputTextSize;
 
-  setState: React.Dispatch<SetStateAction<string>>;
+  setState: Subject<FormEvent<HTMLInputElement>>
 };
 
 export default function TextInput({
@@ -33,7 +34,7 @@ export default function TextInput({
       id={id}
       type={type}
       placeholder={placeholder}
-      onChange={(e) => setState(e.target.value)}
+      onChange={(e) => setState.next(e)}
       value={value}
     />
   );
