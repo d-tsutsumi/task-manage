@@ -1,47 +1,29 @@
-import { ObservableInput, Subject, catchError, map, of } from 'rxjs';
 import LoginLayout from '../../layout/loginLayout';
 import LoginForm from './loginForm';
-import { FormEvent, useState } from 'react';
-import { fromFetch } from 'rxjs/fetch';
-import { User } from '../../../models/user';
+import { FormEvent } from 'react';
+import { useTextInputValue } from '../../../hooks/useInputChange';
+import { login} from '@/usecase/login';
+import { setLoginUser, LoginUser, loginUser } from '../../../store/loginUser';
 export default function Login() {
-  const [username, setUsername] = useState<string>('');
-  const [password, setPassword] = useState<string>('');
+  const [username, userNameSubject] = useTextInputValue();
+  const [password, passwordSubject] = useTextInputValue();
 
-  const userNameSubject = new Subject<FormEvent<HTMLInputElement>>();
-  userNameSubject.subscribe({
-    next: (e) => setUsername(e.currentTarget.value),
-    error: (e) => console.log(e),
-    complete: () => setUsername(''),
-  });
-
-  const passwordSubject = new Subject<FormEvent<HTMLInputElement>>();
-  passwordSubject.subscribe({
-    next: (e) => {
-      setPassword(e.currentTarget.value);
-    },
-    error: (e) => console.log(e),
-    complete: () => setPassword(''),
-  });
-
-  const loginData$ = fromFetch<User>('/login', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ user_name: username, password }),
-    selector: (res) => res.json(),
-  }).pipe(
-    map((user) => ({ token: user.token, role: user.role, userName: user.user_name })),
-    catchError((err) => {
-      // Network or other error, handle appropriately
-      console.error(err);
-      return of({ error: true, message: err.message });
-    }),
-  );
   const submit = (e: FormEvent) => {
+    console.log("gresgrse")
     e.preventDefault();
-    loginData$.subscribe({
-      next: (user) => {
-        console.log(user);
+    login(username, password).subscribe({
+      next: (res) => {
+        if (!res.error) {
+          const loginUser = res as LoginUser;
+          setLoginUser({
+            userName: loginUser.userName,
+            token: loginUser.token,
+            role: loginUser.role,
+          });
+        } else {
+          // TODO error処理
+          console.log(res);
+        }
       },
       complete: () => {
         userNameSubject.complete();
@@ -51,6 +33,7 @@ export default function Login() {
       },
     });
   };
+
   const loginFormProps = {
     username,
     setUsername: userNameSubject,
@@ -64,6 +47,7 @@ export default function Login() {
       <div className='flex justify-center  mt-8  h-[calc(100vh_-_148px)]'>
         <LoginForm {...loginFormProps} />
       </div>
+      {loginUser.value?.userName}
     </LoginLayout>
   );
 }

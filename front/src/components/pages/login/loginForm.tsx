@@ -1,7 +1,6 @@
 import InputGroup from '@/components/ui/input/inputGroup';
 import PrimarilyButton from '../../ui/button/primarilyButton';
 import { FormEvent } from 'react';
-import { LoginsubmitArgs } from '@/usecase/login';
 import { Subject } from 'rxjs';
 
 type Props = {
