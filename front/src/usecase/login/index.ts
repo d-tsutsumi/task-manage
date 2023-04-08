@@ -4,15 +4,15 @@ import { setLoginUser } from '@/store/loginUser';
 import { FormEvent } from 'react';
 import { NextRouter } from 'next/router';
 import repository from '@/repositories/login';
+import { PipeCatchError } from '@/repositories/types';
 
-type LoginResponse =
-  | { error: boolean; token: string; role: string; user_name: string }
-  | { error: boolean; message: string };
+type LoginResponse = LoginUser | PipeCatchError;
+const isLoginResponse = (response: LoginResponse): response is LoginUser =>
+  'token' in response && 'role' in response && 'user_name' in response;
 
 export const login = (user_name: string, password: string) =>
   repository.post<LoginUser, { user_name: string; password: string }>({ user_name, password }).pipe(
     map((user) => ({
-      error: false,
       token: user.token,
       role: user.role,
       user_name: user.user_name,
@@ -29,12 +29,9 @@ export const loginSubscribe = (
   router: NextRouter,
 ) => ({
   next: (res: LoginResponse) => {
-    if (!res.error) {
-      const loginUser = res as LoginUser;
+    if (isLoginResponse(res)) {
       setLoginUser({
-        user_name: loginUser.user_name,
-        token: loginUser.token,
-        role: loginUser.role,
+        ...res,
       });
       router.push('/dashboad');
     } else {

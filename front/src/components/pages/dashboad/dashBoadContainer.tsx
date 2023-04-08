@@ -1,60 +1,55 @@
-import Table from "@/components/pages/dashboad/table";
+import Table from '@/components/pages/dashboad/table';
+import { DashboadTableContent } from './types';
+import { DashBoadTableProjects } from '@/models/project';
+import { Skills } from '@/models/skill';
+import { User } from '@/models/user';
 
-const mock = {
-  title: 'page Vists',
-  body: [
-    { 'PAGE NAME': '/argon/', VISITORS: '4,569', 'UNIQUE USERS': '340', 'BOUNCE RATE': '46,53%' },
-    { 'PAGE NAME': '/argon/', VISITORS: '4,569', 'UNIQUE USERS': '340', 'BOUNCE RATE': '46,53%' },
-    { 'PAGE NAME': '/argon/', VISITORS: '4,569', 'UNIQUE USERS': '340', 'BOUNCE RATE': '46,53%' },
-    { 'PAGE NAME': '/argon/', VISITORS: '4,569', 'UNIQUE USERS': '340', 'BOUNCE RATE': '46,53%' },
-    { 'PAGE NAME': '/argon/', VISITORS: '4,569', 'UNIQUE USERS': '340', 'BOUNCE RATE': '46,53%' },
-    { 'PAGE NAME': '/argon/', VISITORS: '4,569', 'UNIQUE USERS': '340', 'BOUNCE RATE': '46,53%' },
-    { 'PAGE NAME': '/argon/', VISITORS: '4,569', 'UNIQUE USERS': '340', 'BOUNCE RATE': '46,53%' },
-    { 'PAGE NAME': '/argon/', VISITORS: '4,569', 'UNIQUE USERS': '340', 'BOUNCE RATE': '46,53%' },
-    { 'PAGE NAME': '/argon/', VISITORS: '4,569', 'UNIQUE USERS': '340', 'BOUNCE RATE': '46,53%' },
-    { 'PAGE NAME': '/argon/', VISITORS: '4,569', 'UNIQUE USERS': '340', 'BOUNCE RATE': '46,53%' },
-    { 'PAGE NAME': '/argon/', VISITORS: '4,569', 'UNIQUE USERS': '340', 'BOUNCE RATE': '46,53%' },
-    { 'PAGE NAME': '/argon/', VISITORS: '4,569', 'UNIQUE USERS': '340', 'BOUNCE RATE': '46,53%' },
-    { 'PAGE NAME': '/argon/', VISITORS: '4,569', 'UNIQUE USERS': '340', 'BOUNCE RATE': '46,53%' },
-    { 'PAGE NAME': '/argon/', VISITORS: '4,569', 'UNIQUE USERS': '340', 'BOUNCE RATE': '46,53%' },
-    { 'PAGE NAME': '/argon/', VISITORS: '4,569', 'UNIQUE USERS': '340', 'BOUNCE RATE': '46,53%' },
-    { 'PAGE NAME': '/argon/', VISITORS: '4,569', 'UNIQUE USERS': '340', 'BOUNCE RATE': '46,53%' },
-    { 'PAGE NAME': '/argon/', VISITORS: '4,569', 'UNIQUE USERS': '340', 'BOUNCE RATE': '46,53%' },
-    { 'PAGE NAME': '/argon/', VISITORS: '4,569', 'UNIQUE USERS': '340', 'BOUNCE RATE': '46,53%' },
-    { 'PAGE NAME': '/argon/', VISITORS: '4,569', 'UNIQUE USERS': '340', 'BOUNCE RATE': '46,53%' },
-    { 'PAGE NAME': '/argon/', VISITORS: '4,569', 'UNIQUE USERS': '340', 'BOUNCE RATE': '46,53%' },
-    { 'PAGE NAME': '/argon/', VISITORS: '4,569', 'UNIQUE USERS': '340', 'BOUNCE RATE': '46,53%' },
-    { 'PAGE NAME': '/argon/', VISITORS: '4,569', 'UNIQUE USERS': '340', 'BOUNCE RATE': '46,53%' },
-  ],
+type Props = {
+  user: DashboadTableContent<User[]> | undefined;
+  skills: DashboadTableContent<Skills> | undefined;
+  projects: DashboadTableContent<DashBoadTableProjects[]> | undefined;
 };
 
-export default function DashBoadContainer() {
+export default function DashBoadContainer({ user, skills, projects }: Props) {
   function route() {
     console.log('route');
   }
   return (
     <div className='w-full px-2 sm:px-4 flex flex-wrap gap-6 justify-center'>
-      <div className='basis-7/12'>
-        <Table
-          title={mock.title}
-          body={mock.body}
-          routeDetail={route}
-          height='h-[calc(100vh_-_120px)] '
-        />
-      </div>
+      {user ? (
+        <div className='basis-7/12'>
+          <Table
+            title={user.title}
+            body={user.body}
+            routeDetail={route}
+            height='h-[calc(100vh_-_120px)] '
+          />
+        </div>
+      ) : (
+        <h1>Error</h1>
+      )}
+
       <div className='basis-4/12'>
-        <Table
-          title={mock.title}
-          body={mock.body}
-          routeDetail={route}
-          height='h-[calc((100vh_-_144px)_/_2)]'
-        />
-        <Table
-          title={mock.title}
-          body={mock.body}
-          routeDetail={route}
-          height='h-[calc((100vh_-_144px)_/_2)]'
-        />
+        {skills ? (
+          <Table
+            title={skills.title}
+            body={skills.body}
+            routeDetail={route}
+            height='h-[calc((100vh_-_144px)_/_2)]'
+          />
+        ) : (
+          <h1>Error</h1>
+        )}
+        {projects ? (
+          <Table
+            title={projects.title}
+            body={projects.body}
+            routeDetail={route}
+            height='h-[calc((100vh_-_144px)_/_2)]'
+          />
+        ) : (
+          <h1>Error</h1>
+        )}
       </div>
     </div>
   );

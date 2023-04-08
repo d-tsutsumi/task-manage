@@ -1,7 +1,7 @@
 import TableContent from './tableContent';
 import Header from './tableHeader';
 import TableThead from './tableThead';
-export type TableBodyObject = { [key: string]: string };
+export type TableBodyObject = { [key: string]: string | number };
 
 type Props<T extends TableBodyObject> = {
   title: string;
