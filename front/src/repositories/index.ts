@@ -1,5 +1,6 @@
 import { fromFetch } from 'rxjs/fetch';
-export * from './login';
+import { getwithParamsURL } from './util';
+import { config } from '@/config';
 
 const repository = <T>(resource: string, option: RequestInit) =>
   fromFetch<T>(resource, {
@@ -9,9 +10,12 @@ const repository = <T>(resource: string, option: RequestInit) =>
   });
 
 export default (resource: string) => {
+  const url = config.baseURL + resource;
   return {
-    index: <T>() => repository<T>(resource, { method: 'GET' }),
+    getAll: <T>() => repository<T>(url, { method: 'GET' }),
+    getById: <T, U extends Record<string, string>>(id: U) =>
+      repository<T>(getwithParamsURL(url, id), { method: 'GET' }),
     post: <T, U>(payload: U) =>
-      repository<T>(resource, { method: 'POST', body: JSON.stringify({ ...payload }) }),
+      repository<T>(url, { method: 'POST', body: JSON.stringify({ ...payload }) }),
   };
 };

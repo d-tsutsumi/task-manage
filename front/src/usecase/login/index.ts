@@ -1,17 +1,22 @@
-import loginRepository from '../../repositories/login';
-import { User } from '../../models/user';
+import { LoginUser } from '../../models/auth';
 import { map, catchError, of, Subject } from 'rxjs';
-import { LoginUser, setLoginUser } from '@/store/loginUser';
+import { setLoginUser } from '@/store/loginUser';
 import { FormEvent } from 'react';
 import { NextRouter } from 'next/router';
+import repository from '@/repositories/login';
 
 type LoginResponse =
-  | { error: boolean; token: string; role: string; userName: string }
+  | { error: boolean; token: string; role: string; user_name: string }
   | { error: boolean; message: string };
 
 export const login = (user_name: string, password: string) =>
-  loginRepository.post<User, { user_name: string; password: string }>({ user_name, password }).pipe(
-    map((user) => ({ error: false, token: user.token, role: user.role, userName: user.user_name })),
+  repository.post<LoginUser, { user_name: string; password: string }>({ user_name, password }).pipe(
+    map((user) => ({
+      error: false,
+      token: user.token,
+      role: user.role,
+      user_name: user.user_name,
+    })),
     catchError((err) => {
       console.error(err);
       return of({ error: true, message: err.message });
@@ -27,7 +32,7 @@ export const loginSubscribe = (
     if (!res.error) {
       const loginUser = res as LoginUser;
       setLoginUser({
-        userName: loginUser.userName,
+        user_name: loginUser.user_name,
         token: loginUser.token,
         role: loginUser.role,
       });

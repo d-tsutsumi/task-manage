@@ -5,6 +5,42 @@
       "user_name": "tsutsumi",
       "entry_year": "2022-04-02",
       "team": "tech_fun"
+    },
+    {
+      "user_id": "1",
+      "user_name": "tsutsumi",
+      "entry_year": "2022-04-12",
+      "team": "omo"
+    },
+    {
+      "user_id": "2",
+      "user_name": "etou",
+      "entry_year": "2022-04-01",
+      "team": "omo"
+    },
+    {
+      "user_id": "3",
+      "user_name": "tanaka",
+      "entry_year": "2022-04-15",
+      "team": "back_office"
+    },
+    {
+      "user_id": "4",
+      "user_name": "tsutsumi",
+      "entry_year": "2022-04-16",
+      "team": "tech_fun"
+    },
+    {
+      "user_id": "5",
+      "user_name": "tsutsumi",
+      "entry_year": "2021-11-23",
+      "team": "tech_fun"
+    },
+    {
+      "user_id": "6",
+      "user_name": "tsutsumi",
+      "entry_year": "2022-12-24",
+      "team": "tech_fun"
     }
   ]
 }

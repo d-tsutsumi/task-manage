@@ -13,5 +13,25 @@
     "name": "Echo",
     "kinds": "backend",
     "all_member": 4
+  },
+  {
+    "name": "Echo",
+    "kinds": "backend",
+    "all_member": 4
+  },
+  {
+    "name": "lamda",
+    "kinds": "infla",
+    "all_member": 10
+  },
+  {
+    "name": "ecs",
+    "kinds": "infla",
+    "all_member": 4
+  },
+  {
+    "name": "Next",
+    "kinds": "front",
+    "all_member": 12
   }
 ]

@@ -33,7 +33,7 @@ export default function Login() {
       <div className='flex justify-center  mt-8  h-[calc(100vh_-_148px)]'>
         <LoginForm {...loginFormProps} />
       </div>
-      {loginUser.value?.userName}
+      {loginUser.value?.user_name}
     </LoginLayout>
   );
 }
