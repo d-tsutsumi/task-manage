@@ -6,9 +6,9 @@ import { Skills } from '@/models/skill';
 import { User } from '@/models/user';
 
 type Props = {
-  user: DashboadTableContent<User[]> | undefined;
-  skills: DashboadTableContent<Skills> | undefined;
-  projects: DashboadTableContent<DashBoadTableProjects[]> | undefined;
+  user?: DashboadTableContent<User[]>;
+  skills?: DashboadTableContent<Skills>;
+  projects?: DashboadTableContent<DashBoadTableProjects[]>;
 };
 
 export default function Dashboad(props: Props) {

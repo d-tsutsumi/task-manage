@@ -13,9 +13,9 @@ import { TableBodyObject } from '../components/pages/dashboad/table/table';
 import { DashboadTableContent } from '@/components/pages/dashboad/types';
 
 type Props = {
-  user: DashboadTableContent<User[]> | undefined;
-  skills: DashboadTableContent<Skills> | undefined;
-  projects: DashboadTableContent<DashBoadTableProjects[]> | undefined;
+  user?: DashboadTableContent<User[]>;
+  skills?: DashboadTableContent<Skills>;
+  projects?: DashboadTableContent<DashBoadTableProjects[]>;
 };
 
 export default function DashBoad(props: Props) {
