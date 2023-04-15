@@ -1,4 +1,4 @@
-import Table from '@/components/pages/dashboad/table';
+import Table from '@/components/ui/table';
 import { DashboadTableContent } from './types';
 import { DashBoadTableProjects } from '@/models/project';
 import { Skills } from '@/models/skill';

@@ -14,4 +14,4 @@ export type ProjectMember = {
 };
 
 
-type DashBoadTableProjects = Pick<Project, "name" | "start_year" | "end_years" | "member_count">
+export type DashBoadTableProjects = Pick<Project, "name" | "start_year" | "end_years" | "member_count">

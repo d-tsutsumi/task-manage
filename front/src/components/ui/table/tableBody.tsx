@@ -1,4 +1,4 @@
-export default function TableBody({ columns }: { columns: string[] }) {
+export default function TableBody({ columns }: { columns: (string | number)[] }) {
   return (
     <tr>
       {columns.map((column, index) => (

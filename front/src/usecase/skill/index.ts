@@ -12,7 +12,7 @@ export const isSkills = (response: SkillsResponse): response is DashboadTableCon
 
 export const getShowTableSkills = () =>
   repository.getAll<Skills>().pipe(
-    map((skills) => ({ title: 'sills', body: skills })),
+    map((skills) => ({ title: 'skills', body: skills })),
     catchError((err) => {
       console.error(err);
       return of({ error: true, message: err.message });

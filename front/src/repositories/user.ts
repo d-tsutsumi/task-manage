@@ -1,7 +1,6 @@
+import Repository from '.';
 
-import Repository from '.'
+const resource = '/user';
+const repository = Repository(resource);
 
-const resource = '/user'
-const repository = Repository(resource)
-
-export default repository
+export default repository;

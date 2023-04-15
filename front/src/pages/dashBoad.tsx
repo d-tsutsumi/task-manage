@@ -1,15 +1,12 @@
 import { GetServerSideProps } from 'next/types';
-import Dashboad from '../components/pages/dashboad/index';
 import { firstValueFrom, forkJoin } from 'rxjs';
+
+import Dashboad from '../components/pages/dashboad/index';
+
+import { User, DashBoadTableProjects, Skills } from '@/models';
 import { getShowTableUsers, isUsersResponse } from '@/usecase/user';
-import { User } from '../models/user';
-import { getShowTableSkills } from '@/usecase/skill';
-import { getShowTableProjects } from '@/usecase/project';
-import { isSkills } from '../usecase/skill/index';
-import { isProjects } from '../usecase/project/index';
-import { Skills } from '@/models/skill';
-import { DashBoadTableProjects } from '@/models/project';
-import { TableBodyObject } from '../components/pages/dashboad/table/table';
+import { getShowTableSkills, isSkills } from '@/usecase/skill';
+import { getShowTableProjects, isProjects } from '@/usecase/project';
 import { DashboadTableContent } from '@/components/pages/dashboad/types';
 
 type Props = {
@@ -17,7 +14,6 @@ type Props = {
   skills?: DashboadTableContent<Skills>;
   projects?: DashboadTableContent<DashBoadTableProjects[]>;
 };
-
 export default function DashBoad(props: Props) {
   return <Dashboad {...props} />;
 }

@@ -1,14 +1,15 @@
-import InputGroup from '@/components/ui/input/inputGroup';
-import PrimarilyButton from '../../ui/button/primarilyButton';
 import { FormEvent } from 'react';
 import { Subject } from 'rxjs';
+
+import InputGroup from '@/components/ui/input/inputGroup';
+import PrimarilyButton from '../../ui/button/primarilyButton';
 
 type Props = {
   username: string;
   password: string;
   setUsername: Subject<FormEvent<HTMLInputElement>>;
   setPassword: Subject<FormEvent<HTMLInputElement>>;
-  submit: (e: FormEvent) =>  void
+  submit: (e: FormEvent) => void;
 };
 
 export default function LoginForm({ username, password, setUsername, setPassword, submit }: Props) {

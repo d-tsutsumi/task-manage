@@ -1,13 +1,12 @@
 import { FormEvent } from 'react';
-
-import LoginLayout from '../../layout/loginLayout';
-import LoginForm from './loginForm';
-import { useTextInputValue } from '@/hooks/useInputChange';
-
-import { login } from '@/usecase/login';
-import { loginUser } from '@/store/loginUser';
-import { loginSubscribe } from '@/usecase/login';
 import { useRouter } from 'next/router';
+
+import LoginLayout from '@/components/layout/loginLayout';
+import LoginForm from '@/components/pages/login/loginForm';
+
+import { useTextInputValue } from '@/hooks/useInputChange';
+import { login, loginSubscribe } from '@/usecase/login';
+import { loginUser } from '@/store/loginUser';
 
 export default function Login() {
   const [username, userNameSubject] = useTextInputValue();
