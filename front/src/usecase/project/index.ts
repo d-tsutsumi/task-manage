@@ -3,13 +3,14 @@ import { catchError, map, of } from 'rxjs';
 import repository from '@/repositories/project';
 import { PipeCatchError } from '@/repositories/types';
 import { DashBoadTableProjects, Project } from '@/models/project';
-import { DashboadTableContent } from '../../components/pages/dashboad/types/index';
+import { DashboadTableContent } from '@/components/pages/dashboad/types';
 
 type ProjectsResponse = DashboadTableContent<DashBoadTableProjects[]> | PipeCatchError;
 
 export const isProjects = (
   response: ProjectsResponse,
-): response is DashboadTableContent<DashBoadTableProjects[]> => 'title' in response && 'body' in response;
+): response is DashboadTableContent<DashBoadTableProjects[]> =>
+  'title' in response && 'body' in response;
 
 export const getShowTableProjects = () =>
   repository.getAll<Project[]>().pipe(

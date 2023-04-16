@@ -8,7 +8,7 @@ export default function ShareLayoutNavBar() {
       <Link href='/dashboad' className={aStyle}>
         Dashboad
       </Link>
-      <a href='/users' className={aStyle}>
+      <a href='/user' className={aStyle}>
         Users
       </a>
       <Link href='/project' className={aStyle}>
