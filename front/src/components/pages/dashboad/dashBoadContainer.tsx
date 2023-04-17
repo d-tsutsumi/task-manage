@@ -3,6 +3,7 @@ import { DashboadTableContent } from './types';
 import { DashBoadTableProjects } from '@/models/project';
 import { Skills } from '@/models/skill';
 import { User } from '@/models/user';
+import { useRouter } from 'next/router';
 
 type Props = {
   user?: DashboadTableContent<User[]>;
@@ -11,8 +12,12 @@ type Props = {
 };
 
 export default function DashBoadContainer({ user, skills, projects }: Props) {
-  function route() {
-    console.log('route');
+  const route = useRouter();
+
+  function routeDetail(name: string) {
+    return () => {
+      route.push(name)
+    }
   }
   return (
     <div className='w-full px-2 sm:px-4 flex flex-wrap gap-6 justify-center'>
@@ -21,7 +26,7 @@ export default function DashBoadContainer({ user, skills, projects }: Props) {
           <Table
             title={user.title}
             body={user.body}
-            routeDetail={route}
+            routeDetail={routeDetail("/user")}
             height='h-[calc(100vh_-_120px)] '
           />
         </div>
@@ -34,7 +39,7 @@ export default function DashBoadContainer({ user, skills, projects }: Props) {
           <Table
             title={skills.title}
             body={skills.body}
-            routeDetail={route}
+            routeDetail={routeDetail("/skill")}
             height='h-[calc((100vh_-_144px)_/_2)]'
           />
         ) : (
@@ -44,7 +49,7 @@ export default function DashBoadContainer({ user, skills, projects }: Props) {
           <Table
             title={projects.title}
             body={projects.body}
-            routeDetail={route}
+            routeDetail={routeDetail("/project")}
             height='h-[calc((100vh_-_144px)_/_2)]'
           />
         ) : (

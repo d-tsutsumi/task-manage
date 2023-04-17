@@ -1,9 +1,9 @@
-import { User } from '../../models/user';
 import { catchError, map, of } from 'rxjs';
-import { PipeCatchError } from '@/repositories/types';
 
+import { PipeCatchError } from '@/repositories/types';
 import repository from '@/repositories/user';
-import { DashboadTableContent } from '../../components/pages/dashboad/types/index';
+import { User } from '@/models/user';
+import { DashboadTableContent } from '@/components/pages/dashboad/types';
 
 type UsersResponse = DashboadTableContent<User[]> | PipeCatchError;
 export const isUsersResponse = (
